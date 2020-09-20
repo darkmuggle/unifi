@@ -1,6 +1,8 @@
 FROM registry.fedoraproject.org/fedora:latest
 
-MAINTAINER "Joe Doss <joe@solidadmin.com>"
+MAINTAINER "Ben Howard <me@muggle.dev>"
+# Forked from:
+# MAINTAINER "Joe Doss <joe@solidadmin.com>"
 
 ARG UNIFI_VERSION=5.11.31-ad89aa3621
 ARG UNIFI_SHA256=0d6a68f71e5c83f33ee89dc95279487ad505c0119b5c7166bbf7431b1a0b7fe9

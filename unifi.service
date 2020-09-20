@@ -1,0 +1,14 @@
+[Unit]
+Description=Unifi Service
+Wants=syslog.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/podman rm --force unifi.next
+ExecStartPre=-/bin/rm /var/lib/cni/networks/193net/192.168.3.5
+ExecStartPre=/usr/bin/podman create -a=stdin -a=stdout -a=stderr --cap-drop ALL --rm=true -e UNIFI_UID=271 -e JVM_MAX_HEAP_SIZE=1024m -e TZ='America/Denver' --net 193net --ip 192.168.3.5 -v /opt/unifi.next/data:/opt/unifi/data:Z -v /opt/unifi.next/logs:/opt/unifi/logs:Z -v /opt/unifi.next/run:/opt/unifi/run:Z --name unifi.next localhost/unifi:latest
+ExecStart=/usr/bin/podman start --interactive --attach unifi.next
+
+[Install]
+WantedBy=multi-user.target
+
