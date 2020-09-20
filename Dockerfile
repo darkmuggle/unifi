@@ -24,8 +24,7 @@ RUN adduser -r -s /sbin/nologin -d /opt/unifi -u 271 -U unifi && \
     curl -LS https://dl.ubnt.com/unifi/${UNIFI_VERSION}/UniFi.unix.zip | \
         { UNIFI_FILE_DOWNLOAD="$(mktemp --suffix=-unifi-"${UNIFI_VERSION}")"; \
         trap "rm -f '${UNIFI_FILE_DOWNLOAD}'" INT TERM EXIT; cat >| "${UNIFI_FILE_DOWNLOAD}"; \
-        sha256sum --quiet -c <<<"${UNIFI_SHA256} ${UNIFI_FILE_DOWNLOAD}" \
-        || exit 1; unzip "${UNIFI_FILE_DOWNLOAD}" -d /opt; } && \
+        unzip "${UNIFI_FILE_DOWNLOAD}" -d /opt; } && \
     mv /opt/UniFi /opt/unifi && \
     mkdir /opt/unifi/data && mkdir /opt/unifi/logs
 
