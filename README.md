@@ -1,12 +1,22 @@
 # Ubiquiti Networks Unifi Controller
 
-[![Docker Repository on Quay](https://quay.io/repository/jdoss/unifi/status "Docker Repository on Quay")](https://quay.io/repository/jdoss/unifi)
+Example:
+```
+podman pull quay.io/behoward/unifi
+podman volume create unifi
+podman create \
+  -e UNIFI_UID=$(id -u unifi) \
+  -e JVM_MAX_HEAP_SIZE=1024m \
+  -e TZ='America/Denver' \
+  --privileged \
+  --net 193net --ip 192.168.3.5 \
+  -v unifi:/opt/unifi \
+  --name unifi quay.io/behoward/unifi
+```
 
-This is a repo for building and running a Fedora based container for the Ubiquiti Networks Unifi Controller with [Podman](https://github.com/containers/libpod).
+## Version
 
-- **Version:** 5.11.31-ad89aa3621
-- **SHA256:**  0d6a68f71e5c83f33ee89dc95279487ad505c0119b5c7166bbf7431b1a0b7fe9
-- **Unifi Forum URL:** https://community.ui.com/releases/UniFi-Network-Controller-5-11-31/c7f8a8a0-0414-4324-a567-1f2b3cb6affa
+In general, I try to track the latest, currently 6.2.x.
 
 ## See upstream
 
