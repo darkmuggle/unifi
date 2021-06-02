@@ -1,4 +1,5 @@
 {
+  "_install_location": "/etc/cni/net.d/88-193.conflist",
   "cniVersion": "0.4.0",
   "name": "193net",
   "plugins": [
