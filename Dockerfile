@@ -4,8 +4,7 @@ MAINTAINER "Ben Howard <me@muggle.dev>"
 # Forked from:
 # MAINTAINER "Joe Doss <joe@solidadmin.com>"
 
-# https://dl.ui.com/unifi/6.0.22/UniFi.unix.zip
-ARG UNIFI_VERSION=6.0.22
+ARG UNIFI_VERSION=6.2.17-ceb3ba714d
 ENV UNIFI_VERSION=${UNIFI_VERSION}
 
 ARG UNIFI_UID=271
@@ -16,8 +15,8 @@ ENV JVM_MAX_HEAP_SIZE=${JVM_MAX_HEAP_SIZE}
 
 RUN dnf -y update && \
     dnf install -y java-1.8.0-openjdk wget unzip && \
-    dnf install -y https://repo.mongodb.org/yum/redhat/7/mongodb-org/3.4/x86_64/RPMS/mongodb-org-server-3.4.9-1.el7.x86_64.rpm && \
-    dnf clean all -y
+    dnf install -y https://repo.mongodb.org/yum/redhat/8/mongodb-org/3.6/x86_64/RPMS/mongodb-org-server-3.6.23-1.el8.x86_64.rpm && \
+    dnf clean all
 
 RUN adduser -r -s /sbin/nologin -d /opt/unifi -u 271 -U unifi && \
     curl -LS https://dl.ubnt.com/unifi/${UNIFI_VERSION}/UniFi.unix.zip | \
